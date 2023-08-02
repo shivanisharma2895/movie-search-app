@@ -20,22 +20,48 @@ function App() {
       console.log("error", error);
     })
   }
+
+
   useEffect(() => {
-    getMovies();
-  }, []);
+    setMovies([]);
+    if (search === "") {
+      getMovies();
+    } else {
+      getSearchedMovie();
+    }
+
+  }, [search]);
+
+  const getSearchedMovie = () => {
+
+    console.log(SearchMovieApi + search);
+    axios.get(SearchMovieApi + search).then((res) => {
+      console.log(res.data.results);
+      setMovies(res.data.results);
+    }).catch((error) => {
+      console.log("error", error);
+    })
+  }
+
+  const handleInput = (e) => {
+    console.log("value", e.target.value)
+    setSearch(e.target.value);
+  }
 
 
   return (
     <div className='App'>
       <div className='search-box'>
         <div className='title'>Movies </div>
-        <input type='search' placeholder='search movie here' />
+        <input value={search} onChange={handleInput} type='search' placeholder='search movie here' />
       </div>
+
       <div className='movies'>
         {movies.map((movie) =>
           <MovieCard {...movie} />
         )}
       </div>
+
     </div>
   );
 }
