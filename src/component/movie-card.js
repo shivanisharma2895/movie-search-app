@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./movie-card.css"
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import SelectedMovie from "./selected-movie";
 
 
 
@@ -29,8 +29,7 @@ const MovieCard = (props) => {
 
 
     return (
-        <button onClick={handleClick}>
-            {!selectedMovie}
+        <button type="search" onClick={handleClick}>
             <div className="card">
                 <div className="poster">
                     <img src={IMGPATH + props.poster_path} alt="" />
@@ -38,11 +37,11 @@ const MovieCard = (props) => {
                 <div className="info">
                     <p className="title">{props.title}</p>
                     <p className="vote">{props.vote_average}</p>
-                    {/* <p>{props.overview}</p> */}
+
 
                 </div>
-            </div>
 
+            </div>
 
 
         </button>
