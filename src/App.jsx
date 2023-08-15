@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from "axios"
 import './App.css';
 import MovieCard from './component/movie-card';
+// import MovieDetails from './component/movieDetails';
+
+import SelectedMovie from "./component/selected-movie";
 
 
 
@@ -12,12 +15,15 @@ const SearchMovieApi = "https://api.themoviedb.org/3/search/movie?&api_key=04c35
 function App() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedMovie, onMovieSelect] = useState();
+  // const [id, setId] = useState('');
 
 
   const getMovies = () => {
     axios.get(APIUrl).then((response) => {
       console.log(response.data.results);
       setMovies(response.data.results);
+      // setId(response.data.results.id);
     }
     ).catch((error) => {
       console.log("error", error);
@@ -49,8 +55,11 @@ function App() {
   const handleInput = (e) => {
     console.log("value", e.target.value)
     setSearch(e.target.value);
+    onMovieSelect("");
+
   }
 
+  // const details = movies.filter((movie) => movie.id === id);
 
   return (
 
@@ -61,9 +70,11 @@ function App() {
         <input value={search} onChange={handleInput} type='search' placeholder='search movie here' />
       </div>
 
-      <div className='movies'>
-        {movies.map((movie) =>
-          <MovieCard {...movie} />
+      {selectedMovie && <SelectedMovie selectedMovie={selectedMovie} onMovieSelect={onMovieSelect} />}
+      <div className='movies'  >
+
+        {movies.length && movies.map((movie) =>
+          <MovieCard key={movie.id} {...movie} onMovieSelect={onMovieSelect} />
         )}
       </div>
 
