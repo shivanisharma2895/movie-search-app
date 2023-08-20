@@ -58,10 +58,9 @@ function MovieApp() {
         axios.get(APIUrl).then((res) => {
             console.log(res.data.results.id);
             setId(res.data.results.id);
-            const status = res.data.results.status
-            console.log(status);
 
-            if (movies.id === id) {
+
+            if (id === movies.id) {
                 navigate("/select");
             }
 
@@ -88,12 +87,11 @@ function MovieApp() {
                 {movies.length && movies.map((movie) =>
                     <>  <MovieCard key={movie.id} {...movie} />
                     </>
-
-
-
                 )}
                 <>
-                    {movies.map((movie) => <SelectedMovie {...movie} />)}
+                    {movies[id] &&
+                        movies[id].map((movie) => <SelectedMovie key={id} img={movie.poster_path} title={movie.title} overview={movie.overview} rating={movie.vote_average} />)}
+
                 </>
             </div>
 
