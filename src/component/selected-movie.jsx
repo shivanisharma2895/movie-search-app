@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 
 
 
 const SelectedMovie = () => {
+    const { id } = useParams();
     const APIUrl = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
     const IMGPATH = "https://image.tmdb.org/t/p/w1280/";
-    // const { id } = useParams();
+
     const [selectedMovie, setSelectedMovie] = useState([]);
 
 
@@ -31,21 +33,22 @@ const SelectedMovie = () => {
 
     return (
         <>
-            {selectedMovie.map((movie) => {
-                return (<div className="select">
+            {
+                selectedMovie.map((movie) => {
+                    return (<div className="select">
 
-                    <div className="poster">
-                        <img src={IMGPATH + movie.poster_path} alt="" />
-                    </div>
-                    <div className="info">
-                        <p className="title">{movie.title}</p>
-                        <p className="vote">{movie.vote_average}</p>
-                        <p>{movie.overview}</p>
+                        <div className="poster">
+                            <img src={IMGPATH + movie.poster_path} alt="" />
+                        </div>
+                        <div className="info">
+                            <p className="title">{movie.title}</p>
+                            <p className="vote">{movie.vote_average}</p>
+                            <p>{movie.overview}</p>
 
-                    </div>
+                        </div>
 
-                </div>)
-            })
+                    </div>)
+                })
 
             }
         </>
