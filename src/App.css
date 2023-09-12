@@ -8,7 +8,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
+    margin-top: 30px;
+
 
 }
 
@@ -21,16 +23,11 @@
 }
 
 .search-box input {
+    font-size: 20px;
     width: 20rem;
     height: 2rem;
     margin-bottom: 10px;
     padding-left: 20px;
     margin-left: 10px;
     border-radius: 15px;
-}
-
-.select {
-    background: black;
-    color: white;
-    height: 100vh;
 }

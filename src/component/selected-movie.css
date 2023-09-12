@@ -1,0 +1,57 @@
+.select {
+    background-color: #a6ece0;
+    font-size: medium;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+
+
+
+
+}
+
+.title2 {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.lang,
+.vot {
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    text-align: center;
+    margin-top: 10px;
+
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #4C8577;
+    border-radius: 1.5rem;
+    color: white;
+
+}
+
+.inf {
+    margin-top: 200px;
+}
+
+#image {
+    width: 300px;
+    height: 400px;
+    margin-left: 50px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 10px 3px 10px 0 black;
+
+
+}
+
+.overview {
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+}

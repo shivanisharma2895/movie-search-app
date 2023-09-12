@@ -8,28 +8,12 @@ import axios from "axios";
 
 const MovieCard = (props) => {
 
-    const [id, setId] = useState('');
+
 
     const navigate = useNavigate();
-    const APIUrl = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+
     const SelectMovie = () => {
-        axios.get(APIUrl).then((res) => {
-            console.log(res.data.results.id);
-            setId(res.data.results.id);
-
-
-
-            if (id === movies.id) {
-                navigate("movies/:id");
-
-
-            }
-
-        }
-        ).catch((error) => {
-            console.log("error", error);
-        })
-
+        navigate(`movies/${props.id}`);
     }
 
     const IMGPATH = "https://image.tmdb.org/t/p/w1280/";

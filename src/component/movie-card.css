@@ -6,6 +6,10 @@
     box-shadow: 0 3px 10px 0 #aaa;
 }
 
+.title {
+    font-size: 20px;
+    font-weight: 400;
+}
 
 .poster img {
     width: 15rem;
